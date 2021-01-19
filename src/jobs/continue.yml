@@ -1,0 +1,17 @@
+description: >
+  Make a request to the API to continue the pipeline.
+
+executor: default
+
+parameters:
+  configuration_path:
+    type: string
+    description: "The path to the configuration that will be passed to the continue API"
+  parameters:
+    type: string
+    description: "The parameters used for the pipeline. This can either be a JSON object containing parameters or a path to a file containing a JSON object with parameters"
+    default: "{}"
+steps:
+  - continue:
+      configuration_path: << parameters.configuration_path >>
+      parameters: << parameters.parameters >>

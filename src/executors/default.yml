@@ -1,11 +1,11 @@
 description: >
-  This is a sample executor using Docker and Node.
+  The executor for continuations
 docker:
-  - image: 'cimg/node:<<parameters.tag>>'
+  - image: 'cimg/base:<<parameters.tag>>'
 parameters:
   tag:
-    default: lts
+    default: stable
     description: >
-      Pick a specific circleci/node image variant:
-      https://hub.docker.com/r/cimg/node/tags
+      Pick a specific circleci/base image variant:
+      https://hub.docker.com/r/cimg/base/tags
     type: string
