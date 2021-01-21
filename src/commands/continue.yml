@@ -1,0 +1,19 @@
+description: >
+  Makes a post request to https://circleci.com/api/v2/pipeline/continue
+  to continue a setup workflow.
+
+parameters:
+  configuration_path:
+    type: string
+    description: "The path to the configuration that will be passed to the continue API"
+  parameters:
+    type: string
+    description: "The parameters used for the pipeline. This can either be a JSON object containing parameters or a path to a file containing a JSON object with parameters"
+    default: "{}"
+steps:
+  - run:
+      environment:
+        CONFIG_PATH: <<parameters.configuration_path>>
+        PARAMETERS: <<parameters.parameters>>
+      name: Continue Pipeline
+      command: <<include(scripts/continue.sh)>>
