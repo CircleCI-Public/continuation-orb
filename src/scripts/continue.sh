@@ -22,7 +22,7 @@ JSON_BODY=$( jq -n \
   --arg continuation "$CIRCLE_CONTINUATION_KEY" \
   --arg config "$RAW_CONFIG" \
   --arg params "$PARAMS" \
-  '{"continuation-key": $continuation, "configuration": $config, parameters: $params}'
+  '{"continuation-key": $continuation, "configuration": $config, parameters: $params|fromjson}'
 )
 echo "$JSON_BODY"
 
