@@ -26,9 +26,12 @@ JSON_BODY=$( jq -n \
 )
 echo "$JSON_BODY"
 
-curl \
-  -XPOST \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json"  \
-  --data "${JSON_BODY}" \
-  "https://circleci.com/api/v2/pipeline/continue"
+[[ $(curl \
+        -o /dev/stderr \
+        -w '%{http_code}' \
+        -XPOST \
+        -H "Content-Type: application/json" \
+        -H "Accept: application/json"  \
+        --data "${JSON_BODY}" \
+        "https://circleci.com/api/v2/pipeline/continue") \
+   -eq 200 ]]
