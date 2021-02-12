@@ -4,7 +4,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    continuation: sandbox/continuation@1.2.3
+    continuation: circleci/continuation@1.2.3
   workflows:
     use-my-orb:
       jobs:
