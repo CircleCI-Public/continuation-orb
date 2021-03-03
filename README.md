@@ -1,11 +1,11 @@
 # Continuation Orb
-[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/continuation-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/CircleCI-Public/continuation-orb) [![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/sandbox/continuation)](https://circleci.com/orbs/registry/orb/CircleCI-Public/continuation) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/CircleCI-Public/continuation-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/continuation-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/CircleCI-Public/continuation-orb) [![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/sandbox/continuation)](https://circleci.com/developer/orbs/orb/circleci/continuation) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/CircleCI-Public/continuation-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 Makes requests to the continuation API for setup workflows.
 
 ## Resources
 
-[CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/CircleCI-Public/continuation) - The official registry page of this orb for all versions, executors, commands, and jobs described.
+[CircleCI Orb Registry Page](https://circleci.com/developer/orbs/orb/circleci/continuation) - The official registry page of this orb for all versions, executors, commands, and jobs described.
 [CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.
 
 ### How to Contribute
