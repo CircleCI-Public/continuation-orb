@@ -1,0 +1,9 @@
+description: >
+  Makes a post request to https://circleci.com/api/v2/pipeline/continue
+  with an empty config to advance the pipeline, but not execute any
+  further workflows, preventing other continuations.
+
+steps:
+  - run:
+      name: Finish Pipeline
+      command: <<include(scripts/finish.sh)>>
