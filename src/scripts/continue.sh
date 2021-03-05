@@ -8,6 +8,16 @@ if [ -z "${CONFIG_PATH}" ]; then
     exit 1
 fi
 
+if ! which curl > /dev/null; then
+    echo "curl is required to use this command"
+    exit 1
+fi
+
+if ! which jq > /dev/null; then
+    echo "jq is required to use this command"
+    exit 1
+fi
+
 RAW_CONFIG=$(cat "$CONFIG_PATH")
 
 PARAMS=$([ -f "$PARAMETERS" ] && cat "$PARAMETERS" || echo "$PARAMETERS")
