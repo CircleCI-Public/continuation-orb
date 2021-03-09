@@ -28,13 +28,18 @@ if ! jq . >/dev/null 2>&1 <<<"$PARAMS"; then
     exit 1
 fi
 
+mkdir -p /tmp/circleci
+rm -rf /tmp/circleci/continue_post.json
+
 JSON_BODY=$( jq -n \
   --arg continuation "$CIRCLE_CONTINUATION_KEY" \
   --arg config "$RAW_CONFIG" \
   --arg params "$PARAMS" \
   '{"continuation-key": $continuation, "configuration": $config, parameters: $params|fromjson}'
 )
-echo "$JSON_BODY"
+
+echo $JSON_BODY | jq -cr '' > /tmp/circleci/continue_post.json
+cat /tmp/circleci/continue_post.json
 
 [[ $(curl \
         -o /dev/stderr \
@@ -42,6 +47,6 @@ echo "$JSON_BODY"
         -XPOST \
         -H "Content-Type: application/json" \
         -H "Accept: application/json"  \
-        --data "${JSON_BODY}" \
+        -d @/tmp/circleci/continue_post.json \
         "https://circleci.com/api/v2/pipeline/continue") \
    -eq 200 ]]
