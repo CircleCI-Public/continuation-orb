@@ -18,8 +18,6 @@ if ! which jq > /dev/null; then
     exit 1
 fi
 
-RAW_CONFIG=$(cat "$CONFIG_PATH")
-
 PARAMS=$([ -f "$PARAMETERS" ] && cat "$PARAMETERS" || echo "$PARAMETERS")
 
 
@@ -33,7 +31,7 @@ rm -rf /tmp/circleci/continue_post.json
 
 JSON_BODY=$( jq -n \
   --arg continuation "$CIRCLE_CONTINUATION_KEY" \
-  --arg config "$RAW_CONFIG" \
+  --argfile config "$CONFIG_PATH" \
   --arg params "$PARAMS" \
   '{"continuation-key": $continuation, "configuration": $config, parameters: $params|fromjson}'
 )
