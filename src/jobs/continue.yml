@@ -12,6 +12,7 @@ parameters:
     description: "The parameters used for the pipeline. This can either be a JSON object containing parameters or a path to a file containing a JSON object with parameters"
     default: "{}"
 steps:
+  - checkout
   - continue:
       configuration_path: << parameters.configuration_path >>
       parameters: << parameters.parameters >>
