@@ -10,10 +10,15 @@ parameters:
     type: string
     description: "The parameters used for the pipeline. This can either be a JSON object containing parameters or a path to a file containing a JSON object with parameters"
     default: "{}"
+  circleci_domain:
+    type: string
+    description: "The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)"
+    default: "circleci.com"
 steps:
   - run:
       environment:
         CONFIG_PATH: <<parameters.configuration_path>>
         PARAMETERS: <<parameters.parameters>>
+        CIRCLECI_DOMAIN: <<parameters.circleci_domain>>
       name: Continue Pipeline
       command: <<include(scripts/continue.sh)>>

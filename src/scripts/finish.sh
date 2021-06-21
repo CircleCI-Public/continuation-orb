@@ -21,5 +21,5 @@ echo "$JSON_BODY"
         -H "Content-Type: application/json" \
         -H "Accept: application/json"  \
         --data "${JSON_BODY}" \
-        "https://circleci.com/api/v2/pipeline/continue") \
+        "https://${CIRCLECI_DOMAIN}/api/v2/pipeline/continue") \
    -eq 200 ]]

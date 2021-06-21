@@ -3,7 +3,15 @@ description: >
   with an empty config to advance the pipeline, but not execute any
   further workflows, preventing other continuations.
 
+parameters:
+  circleci_domain:
+    type: string
+    description: "The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)"
+    default: "circleci.com"
+
 steps:
   - run:
       name: Finish Pipeline
+      environment:
+        CIRCLECI_DOMAIN: <<parameters.circleci_domain>>
       command: <<include(scripts/finish.sh)>>
