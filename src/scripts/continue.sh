@@ -46,5 +46,5 @@ cat /tmp/circleci/continue_post.json
         -H "Content-Type: application/json" \
         -H "Accept: application/json"  \
         --data @/tmp/circleci/continue_post.json \
-        "https://circleci.com/api/v2/pipeline/continue") \
+        "https://${CIRCLECI_DOMAIN}/api/v2/pipeline/continue") \
    -eq 200 ]]
