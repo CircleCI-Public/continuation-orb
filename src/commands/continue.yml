@@ -14,6 +14,13 @@ parameters:
     type: string
     description: "The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)"
     default: "circleci.com"
+  tag: 
+    type: string
+    description:  Pick a specific circleci/base image variant: https://hub.docker.com/r/cimg/base/tags
+    default: stable
+
+docker:
+  - image: 'cimg/base:<<parameters.tag>>'
 steps:
   - run:
       environment:
