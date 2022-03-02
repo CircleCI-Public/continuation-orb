@@ -14,6 +14,11 @@ parameters:
     type: string
     description: "The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)"
     default: "circleci.com"
+  when:
+    type: enum
+    enum: ["on_success", "on_fail", "always"]
+    default: "on_success"
+    
 steps:
   - run:
       environment:
@@ -22,3 +27,4 @@ steps:
         CIRCLECI_DOMAIN: <<parameters.circleci_domain>>
       name: Continue Pipeline
       command: <<include(scripts/continue.sh)>>
+      when: <<parameters.when>>
