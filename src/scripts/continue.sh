@@ -1,3 +1,7 @@
+#!/bin/sh
+
+set -e
+
 if [ -z "${CIRCLE_CONTINUATION_KEY}" ]; then
     echo "CIRCLE_CONTINUATION_KEY is required. Make sure setup workflows are enabled."
     exit 1
@@ -19,8 +23,9 @@ if ! which jq > /dev/null; then
 fi
 
 PARAMS=$([ -f "$PARAMETERS" ] && cat "$PARAMETERS" || echo "$PARAMETERS")
+COMMAND=$(echo "$PARAMS" | jq . >/dev/null 2>&1)
 
-if ! jq . >/dev/null 2>&1 <<<"$PARAMS"; then
+if ! $COMMAND; then
     echo "PARAMETERS aren't valid json"
     exit 1
 fi
@@ -39,12 +44,12 @@ jq -n \
 
 cat /tmp/circleci/continue_post.json
 
-[[ $(curl \
+[ "$(curl \
         -o /dev/stderr \
         -w '%{http_code}' \
         -XPOST \
         -H "Content-Type: application/json" \
         -H "Accept: application/json"  \
         --data @/tmp/circleci/continue_post.json \
-        "https://${CIRCLECI_DOMAIN}/api/v2/pipeline/continue") \
-   -eq 200 ]]
+        "https://${CIRCLECI_DOMAIN}/api/v2/pipeline/continue")" \
+   -eq 200 ]
