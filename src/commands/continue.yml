@@ -19,7 +19,7 @@ parameters:
     description: "Specify when to enable or disable this command"
     enum: ["on_success", "on_fail", "always"]
     default: "on_success"
-    
+
 steps:
   - run:
       environment:
