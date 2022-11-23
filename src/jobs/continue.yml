@@ -15,9 +15,17 @@ parameters:
     type: string
     description: "The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)"
     default: "circleci.com"
+  step_checkout:
+    type: boolean
+    description: "Whether to run an optional checkout step before continuing"
+    default: true
 
 steps:
-  - checkout
+  - when:
+      condition:
+        equal: [ true, << parameters.step_checkout >> ]
+      steps:
+        - checkout
   - continue:
       configuration_path: << parameters.configuration_path >>
       parameters: << parameters.parameters >>
