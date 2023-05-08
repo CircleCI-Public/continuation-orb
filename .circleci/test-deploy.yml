@@ -18,6 +18,7 @@ jobs:
       - continuation/continue:
           configuration_path: ""
           when: on_fail
+          circleci_domain: circleci.com
 
 workflows:
   test-deploy:
