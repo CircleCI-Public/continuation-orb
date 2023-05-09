@@ -15,9 +15,28 @@ parameters:
     type: string
     description: "The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)"
     default: "circleci.com"
+  checkout:
+    type: boolean
+    description: "Whether to run an optional checkout step before continuing"
+    default: true
+  workspace_path:
+    type: string
+    description: "Path to attach the workspace to"
+    default: ""
 
 steps:
-  - checkout
+  - when:
+      condition:
+        equal: [ true, << parameters.checkout >> ]
+      steps:
+        - checkout
+  - when:
+      condition:
+        not:
+          equal: [ "", << parameters.workspace_path >> ]
+      steps:
+        - attach_workspace:
+            at: << parameters.workspace_path >>
   - continue:
       configuration_path: << parameters.configuration_path >>
       parameters: << parameters.parameters >>
