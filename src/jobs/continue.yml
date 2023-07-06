@@ -3,6 +3,8 @@ description: >
 
 executor: default
 
+resource_class: << parameters.resource_class >>
+
 parameters:
   configuration_path:
     type: string
@@ -23,6 +25,10 @@ parameters:
     type: string
     description: "Path to attach the workspace to"
     default: ""
+  resource_class:
+    type: string
+    description: "Resource class to use"
+    default: "small"
 
 steps:
   - when:
