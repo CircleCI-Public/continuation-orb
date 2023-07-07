@@ -1,5 +1,5 @@
 description: >
-  Utilize the "continue" job to specify which configuration file to run next.
+  Utilize the "continue" job to specify which configuration file to run next and add additional parameters.
 
 usage:
   version: 2.1
@@ -11,3 +11,4 @@ usage:
       jobs:
         - continuation/continue:
             configuration_path: ".circleci/continue_config.yml"
+            parameters: '{"image-tag":"current"}'
