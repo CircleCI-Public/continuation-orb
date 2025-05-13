@@ -1,5 +1,0 @@
-{
-  "continuation-key": "1234",
-  "configuration": "version: 2.1\nsetup: true\norbs:\n  orb-tools: circleci/orb-tools@11.5\n  shellcheck: circleci/shellcheck@3.1\n\nfilters: &filters\n  tags:\n    only: /.*/\n\nworkflows:\n  lint-pack:\n    jobs:\n      - orb-tools/lint:\n          filters: *filters\n      - orb-tools/pack:\n          filters: *filters\n      - orb-tools/review:\n          filters: *filters\n      - shellcheck/check:\n          shell: bash\n          filters: *filters\n      - orb-tools/publish:\n          orb-name: circleci/continuation\n          vcs-type: << pipeline.project.type >>\n          requires:\n            - orb-tools/lint\n            - orb-tools/review\n            - orb-tools/pack\n            - shellcheck/check\n\n          # Use a context to hold your publishing token.\n          context: orb-publisher\n          filters: *filters\n      # Triggers the next workflow in the Orb Development Kit.\n      - orb-tools/continue:\n          pipeline-number: << pipeline.number >>\n          vcs-type: << pipeline.project.type >>\n          requires: \n            - orb-tools/publish\n          filters: *filters\n",
-  "parameters": {}
-}
