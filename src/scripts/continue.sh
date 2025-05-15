@@ -30,6 +30,11 @@ if ! $COMMAND; then
     exit 1
 fi
 
+if [ -f "$FILES_CHANGED" ] && [ -s "$FILES_CHANGED" ] && [ -n "$PARAMETER_FOR_FILES_CHANGED" ]; then
+    files_json=$(paste -sd, "$FILES_CHANGED")
+    PARAMS=$(echo "$PARAMS" | jq --argjson files "$files_json" --arg param_name "$PARAMETER_FOR_FILES_CHANGED" '. + {$param_name: $files}')
+fi
+
 mkdir -p /tmp/circleci
 rm -rf /tmp/circleci/continue_post.json
 

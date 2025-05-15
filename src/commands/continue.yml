@@ -23,6 +23,13 @@ parameters:
     type: string
     default: /tmp/files-changed-list
     description: When coming from the path-filtering orb, this is the file containing the changed files.
+  parameter_for_files_changed:
+    type: string
+    default: "files_changed"
+    description: >
+      If you want to get the list of files changed coming from path filtering orb, this is the name for the parameter.
+      Defaults to files_changed.
+      Set to empty string if you don't want the parameter.
 
 steps:
   - run:
@@ -31,6 +38,7 @@ steps:
         PARAMETERS: <<parameters.parameters>>
         CIRCLECI_DOMAIN: <<parameters.circleci_domain>>
         FILES_CHANGED: <<parameters.files_changed>>
+        PARAMETER_FOR_FILES_CHANGED: <<parameters.parameter_for_files_changed>>
       name: Continue Pipeline
       command: <<include(scripts/continue.sh)>>
       when: <<parameters.when>>
