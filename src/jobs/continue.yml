@@ -37,6 +37,10 @@ parameters:
     type: executor
     default: default
     description: Executor where this job will run.
+  files_changed:
+    type: string
+    default: /tmp/files-changed-list
+    description: When coming from the path-filtering orb, this is the file containing the changed files.
 
 circleci_ip_ranges: << parameters.circleci_ip_ranges >>
 
@@ -56,4 +60,5 @@ steps:
   - continue:
       configuration_path: << parameters.configuration_path >>
       parameters: << parameters.parameters >>
+      files_changed: << parameters.files_changed >>
       circleci_domain: << parameters.circleci_domain >>
