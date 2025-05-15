@@ -25,7 +25,7 @@ parameters:
     description: When coming from the path-filtering orb, this is the file containing the changed files.
   parameter_for_files_changed:
     type: string
-    default: "files_changed"
+    default: ""
     description: >
       If you want to get the list of files changed coming from path filtering orb, this is the name for the parameter.
       Defaults to files_changed.
