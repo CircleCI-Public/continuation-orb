@@ -28,7 +28,7 @@ parameters:
     default: ""
     description: >
       If you want to get the list of files changed coming from path filtering orb, this is the name for the parameter.
-      Defaults to files_changed.
+      Defaults to empty string.
       Set to empty string if you don't want the parameter.
 
 steps:
