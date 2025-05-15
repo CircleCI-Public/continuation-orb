@@ -10,6 +10,11 @@ if ! which jq > /dev/null; then
     exit 1
 fi
 
+if ! which awk > /dev/null; then
+    echo "awk is required to use this command"
+    exit 1
+fi
+
 JSON_BODY=$( jq -n \
   --arg continuation "$CIRCLE_CONTINUATION_KEY" \
   '{"continuation-key": $continuation, "configuration": "{version: 2, jobs: {}, workflows: {version: 2}}", parameters: {}}'

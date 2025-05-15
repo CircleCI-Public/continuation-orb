@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ef
 
 if [ -z "${CIRCLE_CONTINUATION_KEY}" ]; then
     echo "CIRCLE_CONTINUATION_KEY is required. Make sure setup workflows are enabled."
@@ -18,6 +18,11 @@ fi
 
 if ! which jq > /dev/null; then
     echo "jq is required to use this command"
+    exit 1
+fi
+
+if ! which awk > /dev/null; then
+    echo "awk is required to use this command"
     exit 1
 fi
 
