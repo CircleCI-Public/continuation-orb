@@ -27,9 +27,9 @@ parameters:
     type: string
     default: ""
     description: >
-      If you want to get the list of files changed coming from path filtering orb, this is the name for the parameter.
-      Defaults to empty string.
-      Set to empty string if you don't want the parameter.
+    Name of the parameter that receives the list of changed files from the path filtering orb.
+    Defaults to an empty string.
+    Leave empty if you don't need this parameter.
 
 steps:
   - run:
