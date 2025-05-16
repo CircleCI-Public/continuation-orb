@@ -5,7 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
- - Current development changes [ to be moved to release ]
+### Added
+ - Executor parameter
+ - Retry requests
+
+### Changed
+ - Scripts will use bash now instead of sh
 
 ## [1.0.0] - YYYY-MM-DD
 ### Added

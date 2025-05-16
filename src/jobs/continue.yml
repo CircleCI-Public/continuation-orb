@@ -36,7 +36,7 @@ parameters:
   executor:
     type: executor
     default: default
-    description: Executor where this job will run.
+    description: Executor where this job will run. The executor requires curl, jq, and bash.
 
 circleci_ip_ranges: << parameters.circleci_ip_ranges >>
 

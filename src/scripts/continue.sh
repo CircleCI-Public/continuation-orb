@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/bash
 set -e
 
 if [ -z "${CIRCLE_CONTINUATION_KEY}" ]; then
@@ -45,6 +44,9 @@ jq -n \
 cat /tmp/circleci/continue_post.json
 
 [ "$(curl \
+        --retry 5 \
+        --retry-delay 0 \
+        --retry-connrefused \
         -o /dev/stderr \
         -w '%{http_code}' \
         -XPOST \
