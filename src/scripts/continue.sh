@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ef
+set -e
 
 if [ -z "${CIRCLE_CONTINUATION_KEY}" ]; then
     echo "CIRCLE_CONTINUATION_KEY is required. Make sure setup workflows are enabled."
