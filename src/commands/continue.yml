@@ -19,6 +19,17 @@ parameters:
     description: "Specify when to enable or disable this command"
     enum: ["on_success", "on_fail", "always"]
     default: "on_success"
+  files_changed:
+    type: string
+    default: /tmp/files-changed-list
+    description: This is the file containing the changed files from the path-filtering orb.
+  parameter_for_files_changed:
+    type: string
+    default: ""
+    description: >
+      Name of the parameter that receives the list of changed files from the path filtering orb.
+      Defaults to an empty string.
+      Leave empty if you don't need this parameter.
 
 steps:
   - run:
@@ -26,6 +37,8 @@ steps:
         CONFIG_PATH: <<parameters.configuration_path>>
         PARAMETERS: <<parameters.parameters>>
         CIRCLECI_DOMAIN: <<parameters.circleci_domain>>
+        FILES_CHANGED: <<parameters.files_changed>>
+        PARAMETER_FOR_FILES_CHANGED: <<parameters.parameter_for_files_changed>>
       name: Continue Pipeline
       command: <<include(scripts/continue.sh)>>
       when: <<parameters.when>>
